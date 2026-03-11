@@ -3,7 +3,12 @@ package com.example.UserProject.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UserDTO {
 
     @NotBlank(message = "Name cannot be empty")
@@ -17,45 +22,14 @@ public class UserDTO {
     private int age;
 
     @NotBlank(message="Password cannot be empty")
+    @Size(min = 4, message = "Password must be at least 4 characters")
     private String password;
 
-    public UserDTO() {}
+    private String role;
 
-    public UserDTO(String name, String email, int age) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public int getAge() {
-        return age;
-    }
 }

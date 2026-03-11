@@ -24,6 +24,11 @@ public class UserService {
         user.setAge(dto.getAge());
         // here password is getting encoded using Bcrypt
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        if(dto.getRole() == null || dto.getRole().isEmpty()){
+            user.setRole("ROLE_USER");
+        } else {
+            user.setRole(dto.getRole());
+        }
 
         return userRepository.save(user);
     }
